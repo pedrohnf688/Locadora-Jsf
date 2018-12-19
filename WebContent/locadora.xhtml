@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <h:head>
+        <title>Locadora de Filmes</title>
+    </h:head>
+    <h:body>
+        <h1>Locadora</h1>
+        <h:form>
+            <h:dataTable value="#{locadora.listaCesta}" var="listaCesta">
+                <h:column>
+                    <f:facet name="header">Id</f:facet>
+                    <h:outputText value="#{listaCesta.id}" />      
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Titulo</f:facet>
+                    <h:outputText value="#{listaCesta.titulo}" />
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Data de Lançamento</f:facet>
+                    <h:outputText value="#{listaCesta.dataLancamento}">
+                    <f:convertDateTime pattern="dd.MM.yyyy"/>
+                    </h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Nota</f:facet>
+                    <h:outputText value="#{listaCesta.nota}" />
+                </h:column>
+                  <h:column>
+                    <f:facet name="header">Descrição</f:facet>
+                    <h:outputText value="#{listaCesta.descricao}" />
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Quantidade</f:facet>
+                     <h:outputText value="#{listaCesta.quantidade}" />
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Preço</f:facet>
+                     <h:outputText value="#{listaCesta.valor}" />
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Adicionar</f:facet><h:commandButton value="Adicionar Produto" action="#{cestaAlugar.AdicionarCesta(listaCesta)}" disabled="#{listaCesta.quantidade == 0}"/>
+                </h:column>
+            </h:dataTable>
+            <h:commandLink value="Ver Cesta" action="Cesta"></h:commandLink><br/>
+            <h:commandLink value="Cadastrar" action="CadastrarFilme"></h:commandLink><br/>
+
+        </h:form>
+
+    </h:body>
+</html>
+

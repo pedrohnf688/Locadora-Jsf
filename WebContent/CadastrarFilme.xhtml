@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head></h:head>
+<body>
+	<h1>Cadastro de Filmes</h1>
+
+	<h:form>
+	
+      Titulo:<h:inputText id="ftitulo" value="#{locadora.filme.titulo}"
+			 required="true" requiredMessage="Preencha o Titulo do Filme !!" >
+		     <f:validateLength minimum="1"/>
+		     </h:inputText>
+		     <h:message id="m1" for="ftitulo" style="color:red" />
+		     <br />
+		
+      Data de Lançamento:<h:inputText name="flancamento" id="flancamento" value="#{locadora.filme.dataLancamento}" required="true">
+	                     <f:convertDateTime pattern="dd.MM.yyyy" for="flancamento"/>
+		                 </h:inputText>
+		                 <h:message id="m2" for="flancamento" style="color:red" />
+		                  <br />
+		                 
+	  Nota:<h:inputText name="fnota" id="fnota" value="#{locadora.filme.nota}" required="true">
+	       <f:validateDoubleRange maximum ="5" minimum ="1"/>
+           </h:inputText>
+           <h:message id="m3" for="fnota" style="color:red" />
+            <br />
+	  
+	  Descrição:<h:inputText name="fdescricao" id="fdescricao" value="#{locadora.filme.descricao}" 
+	            required="true" requiredMessage="Preencha a Descrição do Filme com no Minimo 10 caracteres !!" >
+	            <f:validateLength minimum = "10"/>
+		        </h:inputText>
+		        <h:message id="m4" for="fdescricao" style="color:red" />
+		         <br />
+		        
+	  Quantidade:<h:inputText name="fquantidade" id="fquantidade" value="#{locadora.filme.quantidade}" required="true">
+	       	    <f:validateDoubleRange minimum ="1" />
+	       	    <f:convertNumber type="number"/>
+		        </h:inputText>
+		        <h:message id="m5" for="fquantidade" style="color:red" /> 
+		        <br />
+		        
+	  Preço:<h:inputText name="fvalor" id="fvalor" value="#{locadora.filme.valor}" required="true">
+	        <f:validateDoubleRange minimum="1"/>
+	        <f:convertNumber type="number"/>	        
+	        </h:inputText>
+	        <h:message id="m6" for="fvalor" style="color:red"/>
+	        <br/>
+		        	        
+		<h:commandButton action="#{locadora.Cadastrar()}" value="Cadastrar" />
+		<h:button outcome="/cancelar.xhtml" value="Cancelar"></h:button><br/>
+		<h:button outcome="/locadora.xhtml" value="Locadora"></h:button>
+		<br />
+	</h:form>
+
+
+
+</body>
+</html>
